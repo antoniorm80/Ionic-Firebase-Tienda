@@ -1,1 +1,6 @@
-Repo: https://github.com/antoniorm80/Ionic-Firebase-Tienda
+Repo: https://github.com/antoniorm80/Ionic-Firebase-Tienda;
+
+|+******** Credenciales
+|+++  Email: ariverarm80@gmail.com
+|+++  Test: test791
+|+++  Start Date: 05-Mzo-2024

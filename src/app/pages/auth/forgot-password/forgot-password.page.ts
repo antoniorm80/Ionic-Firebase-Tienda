@@ -56,10 +56,8 @@ export class ForgotPasswordPage implements OnInit {
       .finally(() => {
         loading.dismiss();
       })
-    }
-    
+    }    
   }
-
   
 }
 

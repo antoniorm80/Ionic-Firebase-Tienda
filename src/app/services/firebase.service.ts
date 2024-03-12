@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, up
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { getFirestore, setDoc, doc, getDoc } from "@angular/fire/firestore";
 import User from '../models/user.model';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,15 @@ export class FirebaseService {
 
   auth = inject(AngularFireAuth);
   firestore = inject(AngularFirestore);
+  loaderService = inject(LoaderService);
 
   // ************************ Autenticaicón ************************
-  // Ingresar
+  // Current Log. 
+    getAuth() {
+      return getAuth();
+    }
+
+    // Ingresar
   signIn(user: User) {
     return signInWithEmailAndPassword(getAuth(), user.email, user.password)
   }
@@ -32,6 +39,12 @@ export class FirebaseService {
   // Reestablecer
   sendRecoveyEmail(email: string) {
     return sendPasswordResetEmail(getAuth(), email)
+  }
+
+  signOut() {
+    getAuth().signOut();
+    localStorage.removeItem('user');
+    this.loaderService.routerLink('/auth');
   }
 
   // ************************ Base de Datos ************************

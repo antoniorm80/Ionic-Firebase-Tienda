@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  firebaseSrv = inject(FirebaseService);
+  loadingCtrl = inject(LoaderService);
 
-  ngOnInit() {
+   ngOnInit() {
   }
 
+  signOut() {
+    this.firebaseSrv.signOut();
+  }
 }
