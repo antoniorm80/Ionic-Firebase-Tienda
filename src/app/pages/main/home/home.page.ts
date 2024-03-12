@@ -18,4 +18,8 @@ export class HomePage implements OnInit {
   signOut() {
     this.firebaseSrv.signOut();
   }
+
+  addUpdateProduct() {
+    
+  }
 }
