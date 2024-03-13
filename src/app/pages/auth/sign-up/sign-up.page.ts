@@ -67,7 +67,7 @@ export class SignUpPage implements OnInit {
       let path = `users/${uid}`;
       delete this.form.value.password;
 
-      this.firebaseSvc.setDocumnet(path, this.form.value)
+      this.firebaseSvc.setDocument(path, this.form.value)
       .then( async response => {        
          await this.loaderSvc.saveInLocalStorage('user', this.form.value);   
          this.loaderSvc.routerLink('/main/home');

@@ -91,19 +91,20 @@ ion-button {
     --padding-top: 20px;
 
     ion-avatar {
-        width: 70px;
-        height: 80px;
+        width: 85px;
+        height: 95px;
         --border-radius: 15px;
     }
 
     .name {
+        font-size: 17px;
         font-weight: 600;
         padding-bottom: 5px;
     }
 
     .data {
-        font-size: 13px;
-
+        font-size: 14px;
+        line-height: 20px;
         strong {
             font-weight: 500;
         }
@@ -114,7 +115,7 @@ ion-button {
     }
 
     ion-chip {
-        font-size: 14px;
+        font-size: 15px;
         border-radius: 10px;
         margin-left: 0;
     }
