@@ -5,4 +5,5 @@ Repo: https://github.com/antoniorm80/Ionic-Firebase-Tienda;
 |+++  Test: test791
 |+++  Start Date: 05-Mzo-2024
 
+Video en progreso en el minuto: 2:34 -> 13-Mzo-2024
 

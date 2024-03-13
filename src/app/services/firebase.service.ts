@@ -71,7 +71,7 @@ export class FirebaseService {
   // Obtener documentos de una colección. 
   getCollectionData(path: string, collectionQuey?: any) {
     const ref = collection(getFirestore(), path);
-    return collectionData(query(ref, collectionQuey), {idField: 'id'});
+    return collectionData(query(ref, ...collectionQuey), {idField: 'id'});
   }
 
   // Setear un documento

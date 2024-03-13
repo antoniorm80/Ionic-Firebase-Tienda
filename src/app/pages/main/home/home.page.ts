@@ -4,6 +4,7 @@ import User from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { AddUpdateProductComponent } from 'src/app/shared/components/add-update-product/add-update-product.component';
+import { orderBy, where } from 'firebase/firestore';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ export class HomePage implements OnInit {
   loaderSrv = inject(LoaderService);
 
   products: Product[] = [];
+  loading: boolean = false;
+
   ngOnInit() {
   }
 
@@ -32,10 +35,17 @@ export class HomePage implements OnInit {
   // Obtener productos
   getProducts() {
     let path = `users/${this.user().uid}/products`;
-    let sub = this.firebaseSrv.getCollectionData(path).subscribe({
-      next: (resp: any) => {
-        // console.log(resp);
+    this.loading = true;
+
+    let  query = [
+      orderBy('soldUnits', 'desc')
+      // ,where('soldUnits', '>=', 12)
+    ]
+
+    let sub = this.firebaseSrv.getCollectionData(path, query).subscribe({
+      next: (resp: any) => {        
         this.products = resp;
+        this.loading = false;
         sub.unsubscribe();
       }
     })
@@ -51,6 +61,25 @@ export class HomePage implements OnInit {
 
     if(success) this.getProducts();
     
+  }
+
+  // Confrmar la eleminación del producto
+  async confirmDeleteProduct(product: Product) {
+    this.loaderSrv.presentAlert({
+      header: 'Eliminar Producto',
+      message: '¿Quieres eliminar este producto?',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancelar',
+        },{
+          text: 'Sí, eliminar',          
+          handler: () => {
+            this.deleteProduct(product)
+          }
+        }
+      ]
+    });    
   }
 
   // Eliminar Producto
