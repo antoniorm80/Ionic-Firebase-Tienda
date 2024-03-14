@@ -40,5 +40,9 @@ ion-avatar {
 ion-menu {
    --width: 234px;
    --min-width: 234px;   
-   outline: none;
+    outline: none;
+}
+
+ion-footer {
+    background: var(--ion-color-primary);
 }
