@@ -29,11 +29,11 @@
           <div class="name">{{ prod.name }}</div>
           <div class="data">
             <b>Precio:</b> {{ prod.price | currency: 'USD' }} <br />
-            <b>Unidades vendidas:</b> {{ prod.soldUnits }}
+            <b>Vendidas:</b> {{ prod.soldUnits }}
           </div>
           <ion-chip color="primary" mode="ios" outline="true">
             <ion-label
-              >Ganancias: {{ prod.price * prod.soldUnits | currency: 'USD'
+              >Total: {{ prod.price * prod.soldUnits | currency: 'USD'
               }}</ion-label
             >
           </ion-chip>
